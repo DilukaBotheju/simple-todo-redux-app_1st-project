@@ -1,19 +1,21 @@
-import {createSlice} from "@reduxjs/toolkit";
+import {createSlice,nanoid} from "@reduxjs/toolkit";
 
 const taskSlice = createSlice({
     name: "tasks",
     initialState: {
-        task:[]
+        task:[],
     },
     reducers: {
         storeTask: (state,action) => {
-            state.task.push = (action.payload)
+            const task = {id:nanoid(),task:action.payload}
+            state.task.push(task)
         },
-        removeTask: () => {
-
-        }
-    }
-})
+        removeTask: (state,action) => {
+            const removeTaskId= action.payload
+            state.tasks=state,tasks.filter(task=>task.id!==removeTaskId)
+        },
+    },
+});
 
 export const {storeTask, removeTask} = taskSlice.actions;
-export default taskSlice.reducer
+export default taskSlice.reducer;
