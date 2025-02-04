@@ -10,9 +10,8 @@ const taskSlice = createSlice({
             const task = {id:nanoid(),task:action.payload}
             state.task.push(task)
         },
-        removeTask: (state,action) => {
-            const removeTaskId= action.payload
-            state.tasks=state,tasks.filter(task=>task.id!==removeTaskId)
+        removeTask: () => {
+
         },
     },
 });
